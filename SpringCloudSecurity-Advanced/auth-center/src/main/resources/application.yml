@@ -1,0 +1,4 @@
+server:
+  port: 8081
+
+raj.security.jwt.secret: asupersecretpassword

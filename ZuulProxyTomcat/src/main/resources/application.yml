@@ -1,0 +1,21 @@
+server:
+   port: 80
+
+zuul:
+  routes:
+    gitBooks:
+      path: /gitBooks/**
+      url: http://localhost:8080
+
+# Not working
+security:
+  oauth2:
+    client:
+      clientId: 3aaa88748f1076a9eac5
+      clientSecret: fbcb295ab844f2b3b7aa9af0fc1bf2ba2012be60
+      accessTokenUri: https://github.com/login/oauth/access_token
+      userAuthorizationUri: https://github.com/login/oauth/authorize
+      clientAuthenticationScheme: form
+    resource:
+      userInfoUri: https://api.github.com/user
+      preferTokenInfo: false
