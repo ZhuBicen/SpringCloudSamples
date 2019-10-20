@@ -17,39 +17,40 @@ import java.util.Collections;
 @Component
 public class WebRoutes {
 
-	@Bean
-	RouterFunction<?> iconResources() {
-		return RouterFunctions
-				.resources("/favicon.**", new ClassPathResource("images/favicon.ico"));
-	}
+//	@Bean
+//	RouterFunction<?> iconResources() {
+//		return RouterFunctions
+//				.resources("/favicon.**", new ClassPathResource("images/favicon.ico"));
+//	}
 
 	@Bean
 	RouterFunction<?> viewRoutes() {
+		System.out.println("Initilizing viewRoutes");
 		return RouterFunctions
 				.route(RequestPredicates.GET("/login"),
 						req -> {
-							System.out.println("long filter, not printed");
+							System.out.println("login filter, not printed");
 							return ServerResponse
 										.ok()
 										.render("login-form",
 												req.exchange().getAttributes());
 				}
 				)
-				.andRoute(RequestPredicates.GET("/bye"),
-						req -> ServerResponse.ok().render("bye")
-				)
-				.filter((req, resHandler) ->
-						req.exchange()
-								.getAttributeOrDefault(
-										CsrfToken.class.getName(),
-										Mono.empty().ofType(CsrfToken.class)
-								)
-								.flatMap(csrfToken -> {
-									req.exchange()
-											.getAttributes()
-											.put(csrfToken.getParameterName(), csrfToken);
-									return resHandler.handle(req);
-								}))
+//				.andRoute(RequestPredicates.GET("/bye"),
+//						req -> ServerResponse.ok().render("bye")
+//				)
+//				.filter((req, resHandler) ->
+//						req.exchange()
+//								.getAttributeOrDefault(
+//										CsrfToken.class.getName(),
+//										Mono.empty().ofType(CsrfToken.class)
+//								)
+//								.flatMap(csrfToken -> {
+//									req.exchange()
+//											.getAttributes()
+//											.put(csrfToken.getParameterName(), csrfToken);
+//									return resHandler.handle(req);
+//								}))
 				.andRoute(RequestPredicates.GET("/"),
 						req -> req.principal()
 								.ofType(Authentication.class)

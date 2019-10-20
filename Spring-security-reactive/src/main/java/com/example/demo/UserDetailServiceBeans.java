@@ -27,14 +27,14 @@ public class UserDetailServiceBeans {
 		return User
 				.withUsername(u)
 				.passwordEncoder(pw::encode)
-				.password("pw")
+				.password("letmein")
 				.authorities(roles)
 				.build();
 	}
 
 	private static final Collection<UserDetails> users = new ArrayList<>(
 			Arrays.asList(
-					user("thor", "ROLE_USER"),
+					user("bzhu", "ROLE_USER"),
 					user("loki", "ROLE_USER"),
 					user("odin", "ROLE_ADMIN", "ROLE_USER")
 			));

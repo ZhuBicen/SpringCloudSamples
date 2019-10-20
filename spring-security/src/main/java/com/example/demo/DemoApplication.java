@@ -2,13 +2,17 @@ package com.example.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
-import org.springframework.web.reactive.config.EnableWebFlux;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
 @SpringBootApplication
-@EnableWebFlux
 public class DemoApplication {
 
+	@GetMapping("/")
+	String hello() {
+		return "Hello from spring security";
+	}
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
