@@ -36,8 +36,8 @@ public class SecurityConfiguration {
 				.authenticationSuccessHandler(new RedirectServerAuthenticationSuccessHandler("/"))
 				.and()
 				.logout()
-				//.logoutUrl("/logout")
-				//.logoutSuccessHandler(logoutSuccessHandler("/bye"))
+				.logoutUrl("/logout")
+				.logoutSuccessHandler(logoutSuccessHandler("/bye"))
 				.and()
 				.build();
 	}

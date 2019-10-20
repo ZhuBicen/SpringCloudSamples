@@ -36,9 +36,9 @@ public class WebRoutes {
 												req.exchange().getAttributes());
 				}
 				)
-//				.andRoute(RequestPredicates.GET("/bye"),
-//						req -> ServerResponse.ok().render("bye")
-//				)
+				.andRoute(RequestPredicates.GET("/bye"),
+						req -> ServerResponse.ok().render("bye")
+				)
 //				.filter((req, resHandler) ->
 //						req.exchange()
 //								.getAttributeOrDefault(
